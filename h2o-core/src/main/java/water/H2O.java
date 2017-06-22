@@ -334,6 +334,9 @@ final public class H2O {
     /** -md5skip, -md5skip=true; test-only; Skip the MD5 Jar checksum; allows jars from different builds to mingle in the same cloud */
     public boolean md5skip = false;
 
+    /* -no_memory_check, -no_memory_check=true; do not check if the model will fit in available memory - for internal debugging */
+    public boolean noMemoryCheck = false;
+
     /** -quiet Enable quiet mode and avoid any prints to console, useful for client embedding */
     public boolean quiet = false;
 
@@ -587,6 +590,9 @@ final public class H2O {
       }
       else if (s.matches("no_latest_check")) {
         trgt.noLatestCheck = true;
+      }
+      else if (s.matches("no_memory_check")) {
+        trgt.noMemoryCheck = true;
       }
       else {
         parseFailed("Unknown argument (" + s + ")");
